@@ -1,0 +1,116 @@
+---
+import '../styles/global.css';
+
+const { title, description, page } = Astro.props;
+const current = (name) => (name === page ? 'page' : undefined);
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <a href="tel:+61488905457"><svg class="icon"><use href="#i-phone"/></svg>+61 488 905 457</a>
+      <a class="t-email" href="mailto:susan@connectivitycaresolutions.com.au"><svg class="icon"><use href="#i-mail"/></svg>susan@connectivitycaresolutions.com.au</a>
+      <a class="t-address" href="https://maps.app.goo.gl/4mhTXmNiUf1FmtQf7" target="_blank" rel="noopener"><svg class="icon"><use href="#i-pin"/></svg>Eleebana NSW</a>
+    </div>
+    <div class="topbar-social">
+      <a href="https://www.facebook.com/connectivitycaresolutions.com.au/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
+      <a href="https://www.instagram.com/connectivitycare_solutions" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="/" aria-label="Connectivity Care Solutions home"><img src="/images/logo.png" alt="Connectivity Care Solutions" width="268" height="49"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon"><use href="#i-menu"/></svg>Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="/" aria-current={current('home')}>Home</a>
+      <a href="/about" aria-current={current('about')}>About us</a>
+      <a href="/services" aria-current={current('services')}>Services</a>
+      <a href="/faq" aria-current={current('faq')}>FAQ</a>
+      <a class="btn btn-primary" href="/contact" aria-current={current('contact')}>Contact us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<slot />
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="footer-logo" href="/" aria-label="Connectivity Care Solutions home"><img src="/images/logo.png" alt="Connectivity Care Solutions" width="268" height="49"></a>
+      <p>Personalised, registered NDIS disability support from our base in Eleebana, NSW.</p>
+      <div class="socials">
+        <a class="social-btn" href="https://www.facebook.com/connectivitycaresolutions.com.au/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
+        <a class="social-btn" href="https://www.instagram.com/connectivitycare_solutions" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
+      </div>
+    </div>
+    <nav aria-label="Footer">
+      <h2>Quick links</h2>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About us</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/contact">Contact us</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2>Get in touch</h2>
+      <ul class="footer-links footer-contact">
+        <li><svg class="icon"><use href="#i-phone"/></svg><a href="tel:+61488905457">+61 488 905 457</a></li>
+        <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:susan@connectivitycaresolutions.com.au" style="overflow-wrap:anywhere">susan@connectivitycaresolutions.com.au</a></li>
+        <li><svg class="icon"><use href="#i-pin"/></svg><a href="https://maps.app.goo.gl/4mhTXmNiUf1FmtQf7" target="_blank" rel="noopener">5 Park Dr, Eleebana NSW 2282, Australia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Connectivity Care Solutions</span>
+    <span>Registered NDIS provider</span>
+    <span>Website powered by <a class="credit" href="https://peaksocial.com.au/" target="_blank" rel="noopener">Peak Social</a></span>
+  </div>
+</footer>
+
+<script>
+const header = document.getElementById('site-header');
+const toggle = header.querySelector('.menu-toggle');
+toggle.addEventListener('click', () => {
+  const open = header.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+</script>
+</body>
+</html>
