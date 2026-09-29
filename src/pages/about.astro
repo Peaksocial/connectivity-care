@@ -2,74 +2,59 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout page="about" title="About us | Connectivity Care Solutions" description="Registered NDIS provider in Eleebana, NSW. Meet our founder Susan and learn about our mission, vision and values.">
-  <section class="page-hero">
-    <div class="wrap">
-      <h1>About us</h1>
-      <p class="lede">We're a registered NDIS provider in Eleebana, NSW, built on a genuine commitment to making a positive difference in people's lives.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap story">
+  <section class="about-top">
+    <div class="wrap about-grid">
       <div>
-        <h2>Our story</h2>
+        <h1>About Us</h1>
+        <p class="lede">We're a registered NDIS provider in Eleebana, NSW, built on a genuine commitment to making a positive difference in people's lives.</p>
+        <h2 class="sub-heading">Our Story</h2>
         <p>Connectivity Care Solutions began in 2022. Our founder, Susan, wanted to offer support that looks after a person's overall wellbeing, not just a list of tasks.</p>
         <p>Hard work, a love for what we do, and the trust of participants, their families and friends are what keep us going.</p>
         <p>We're a registered provider and fully compliant with NDIS regulations and standards, so you can feel confident in the support you receive.</p>
-        <div class="founder">
-          <div class="monogram" aria-hidden="true">S</div>
-          <div><strong>Susan</strong><span>Founder, Connectivity Care Solutions</span></div>
-        </div>
       </div>
-      <figure class="ph"><img src="/images/Susan.png" alt="Portrait of Susan, founder of Connectivity Care Solutions" style="object-position:50% 20%"></figure>
+      <div class="founder-card">
+        <img src="/images/Susan.png" alt="Portrait of Susan, founder of Connectivity Care Solutions" width="1080" height="1080">
+        <p class="name">Susan<span>Founder, Connectivity Care Solutions</span></p>
+      </div>
     </div>
   </section>
 
-  <section class="section tint">
-    <div class="wrap mv">
-      <div class="mv-panel">
-        <h2>Our mission</h2>
+  <svg class="wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path fill="#F01A78" d="M0 140V40c160-42 320-52 520-18s420 66 640 30c100-16 180-34 280-52v140z"/></svg>
+
+  <section class="mission">
+    <div class="heart-mark" aria-hidden="true"><svg viewBox="0 0 100 92"><use href="#i-heart"/></svg></div>
+    <div class="wrap">
+      <div class="mission-card">
+        <h2><span class="thin">Our</span> Mission</h2>
         <p>We empower people by supporting their independence and connecting them with their community.</p>
-        <p>With Connectivity Care, you're not alone, and you never have to be. We partner with you so you can live freely in an inclusive community where you're valued and supported.</p>
-      </div>
-      <figure class="ph"><img src="/images/cafe.jpg" alt="A man smiling at an outdoor café table" style="object-position:50% 40%"></figure>
-      <div class="mv-panel">
-        <h2>Our vision</h2>
+        <p>With <strong>Connectivity Care</strong>, you're not alone, and you never have to be. We partner with you so you can live freely in an inclusive community where you're valued and supported.</p>
+        <h2><span class="thin">Our</span> Vision</h2>
         <p>A society that sees beyond disability, where people are empowered to build their independence at home and in their community.</p>
         <p>We aim to be one of the leading NDIS registered providers, setting new standards for quality care and innovation.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>What guides us</h2>
-        <p class="lede">Five values shape every shift, every conversation and every plan.</p>
-      </div>
-      <ul class="values">
-        <li><div class="value-icon"><svg class="icon"><use href="#i-users"/></svg></div><h3>Respect</h3><p>We listen first and honour each person's choices, background and privacy.</p></li>
-        <li><div class="value-icon"><svg class="icon"><use href="#i-heart"/></svg></div><h3>Care and compassion</h3><p>Support delivered with warmth, patience and genuine kindness.</p></li>
-        <li><div class="value-icon"><svg class="icon"><use href="#i-shield"/></svg></div><h3>Integrity</h3><p>We're honest and transparent with participants and their families.</p></li>
-        <li><div class="value-icon"><svg class="icon"><use href="#i-sun"/></svg></div><h3>Uplifting environment</h3><p>We create spaces where people feel encouraged, valued and free to grow.</p></li>
-        <li><div class="value-icon"><svg class="icon"><use href="#i-award"/></svg></div><h3>Qualified staff</h3><p>Our team brings the right training and experience to every shift.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="cta">
-        <svg class="cta-heart icon-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg>
-        <div>
-          <h2>See how we can support you</h2>
-          <p>We offer a range of person-centred services because we know one size doesn't fit all.</p>
+        <h2><span class="thin">What</span> Guides Us</h2>
+        <p>Five values shape every shift, every conversation and every plan.</p>
+        <div class="values">
+          <details class="value"><summary><svg class="chev"><use href="#i-chevron"/></svg>Respect</summary><div class="body">We listen first and honour each person's choices, background and privacy.</div></details>
+          <details class="value"><summary><svg class="chev"><use href="#i-chevron"/></svg>Care and Compassion</summary><div class="body">Support delivered with warmth, patience and genuine kindness.</div></details>
+          <details class="value"><summary><svg class="chev"><use href="#i-chevron"/></svg>Integrity</summary><div class="body">We're honest and transparent with participants and their families.</div></details>
+          <details class="value"><summary><svg class="chev"><use href="#i-chevron"/></svg>Uplifting Environment</summary><div class="body">We create spaces where people feel encouraged, valued and free to grow.</div></details>
+          <details class="value"><summary><svg class="chev"><use href="#i-chevron"/></svg>Qualified Staff</summary><div class="body">Our team brings the right training and experience to every shift.</div></details>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-offered">
+    <div class="wrap so-grid">
+      <div>
+        <h2>See how we can support you</h2>
+        <p class="lede">We offer a range of person-centred services because we know one size doesn't fit all.</p>
         <div class="btn-row">
-          <a class="btn btn-light" href="/services">View our services</a>
-          <a class="btn btn-ghost" href="/contact">Contact us</a>
+          <a class="btn btn-white" href="/services">View our services</a>
+          <a class="btn btn-ghost" href="/contact">Contact Us</a>
         </div>
       </div>
+      <figure class="so-photo"><img src="/images/cafe.jpg" alt="A man smiling at an outdoor café table" style="object-position:50% 40%"></figure>
     </div>
   </section>
 </Layout>
