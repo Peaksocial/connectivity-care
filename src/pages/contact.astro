@@ -32,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="form-card">
         <form id="contact-form" novalidate>
           <h2>Send us a message</h2>
-          <p class="form-note">All fields are required. We'll get back to you as soon as we can.</p>
+          <p class="form-note">Fields marked <span class="req">*</span> are required. We'll get back to you as soon as we can.</p>
           <div class="field-row">
             <div>
               <label for="f-name">Your Name <span class="req" aria-hidden="true">*</span></label>
@@ -48,9 +48,24 @@ import Layout from '../layouts/Layout.astro';
           <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
           <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
           <p class="error" id="email-error" aria-live="polite"></p>
+          <label for="f-service">Service you're interested in <span class="optional">(optional)</span></label>
+          <select id="f-service" name="service">
+            <option value="">Select a service</option>
+            <option value="support-coordination">NDIS Support Coordination</option>
+            <option value="daily-living">Assistance with daily living</option>
+            <option value="independent-living">Supported independent living</option>
+            <option value="community-access">Community access and group activities</option>
+            <option value="short-medium-stay">Short and medium stay accommodation</option>
+            <option value="in-home">In-home services</option>
+            <option value="shopping-domestic">Shopping and domestic duties</option>
+            <option value="appointments">Assistance with getting to appointments</option>
+            <option value="respite">Respite</option>
+            <option value="not-sure">Not sure yet</option>
+          </select>
           <label for="f-message">Message <span class="req" aria-hidden="true">*</span></label>
           <textarea id="f-message" name="message" required aria-describedby="message-error"></textarea>
           <p class="error" id="message-error" aria-live="polite"></p>
+          <p class="error send-error" id="send-error" role="alert"></p>
           <button class="btn" type="submit">Submit</button>
         </form>
         <div class="form-success" id="form-success" tabindex="-1" hidden>
@@ -77,23 +92,31 @@ const SERVICES = {
   'appointments': 'help getting to appointments',
   'respite': 'respite'
 };
-const ask = SERVICES[new URLSearchParams(location.search).get('service')];
+const serviceSlug = new URLSearchParams(location.search).get('service');
+const ask = SERVICES[serviceSlug];
 if (ask) {
+  document.getElementById('f-service').value = serviceSlug;
   const msg = document.getElementById('f-message');
   if (!msg.value.trim()) msg.value = "Hi, I'd like to find out more about " + ask + ".";
 }
 
-// Contact form (mockup: validates and shows a confirmation, nothing is sent)
+// Contact form: validates, then posts to the n8n webhook.
+// Sent as form-urlencoded (a "simple" CORS request) so the browser skips the preflight.
+const WEBHOOK_URL = 'https://n8n.creativepeaksocial.com/webhook/connectivity-care-solutions-contact-form';
 const form = document.getElementById('contact-form');
 const success = document.getElementById('form-success');
+const submitBtn = form.querySelector('button[type="submit"]');
+const sendError = document.getElementById('send-error');
 const rules = {
   name: v => v.trim() ? '' : 'Enter your name',
   phone: v => !v.trim() ? 'Enter your phone number' : (v.replace(/\D/g,'').length >= 8 ? '' : 'Enter a phone number with at least 8 digits'),
   email: v => !v.trim() ? 'Enter your email address' : (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Enter an email address like name@example.com'),
   message: v => v.trim() ? '' : 'Enter your message'
 };
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
   e.preventDefault();
+  if (submitBtn.disabled) return;
+  sendError.textContent = '';
   let firstBad = null;
   ['name','phone','email','message'].forEach(key => {
     const el = form.elements[key];
@@ -103,6 +126,30 @@ form.addEventListener('submit', e => {
     if (msg && !firstBad) firstBad = el;
   });
   if (firstBad) { firstBad.focus(); return; }
+
+  const body = new URLSearchParams({
+    name: form.elements.name.value.trim(),
+    phone: form.elements.phone.value.trim(),
+    email: form.elements.email.value.trim(),
+    message: form.elements.message.value.trim(),
+    service: form.elements.service.value ? form.elements.service.selectedOptions[0].text : '',
+    page: location.href,
+    submittedAt: new Date().toISOString()
+  });
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+  try {
+    const res = await fetch(WEBHOOK_URL, { method: 'POST', body });
+    if (!res.ok) throw new Error('Webhook responded ' + res.status);
+  } catch (err) {
+    console.error(err);
+    sendError.textContent = "Sorry, your message couldn't be sent. Please try again, or call us on +61 488 905 457.";
+    return;
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit';
+  }
+
   document.getElementById('success-name').textContent = form.elements.name.value.trim().split(/\s+/)[0];
   form.hidden = true;
   success.hidden = false;
@@ -116,6 +163,7 @@ form.querySelectorAll('input, textarea').forEach(el => el.addEventListener('inpu
 }));
 document.getElementById('send-another').addEventListener('click', () => {
   form.reset();
+  sendError.textContent = '';
   success.hidden = true;
   form.hidden = false;
   form.elements.name.focus();
