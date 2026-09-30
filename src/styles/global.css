@@ -80,9 +80,10 @@ figure{margin:0}
 .hero{position:relative;background:var(--pink-pale);padding:5rem 0 0;overflow:hidden}
 .hero .heart-mark{width:620px;right:-40px;top:-60px;color:#fff;opacity:.25}
 .hero-inner{position:relative;z-index:3}
-.hero h1{font-size:clamp(2.4rem,4.6vw,3.6rem);font-weight:600;color:#1a1a1a;margin-bottom:.4em;max-width:20ch;margin-inline:auto}
+.hero h1{font-size:clamp(2.4rem,4.6vw,3.6rem);font-weight:600;color:#1a1a1a;margin-bottom:.3em}
 .hero h1 span{color:var(--coral);display:block}
-.hero .tagline{font-family:var(--heading);font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:500;color:#1a1a1a;max-width:720px;margin:0 auto 1.8rem}
+.hero .tagline{font-family:var(--heading);font-size:clamp(1.15rem,2vw,1.5rem);font-weight:500;color:#1a1a1a;max-width:680px;margin:0 auto 2.2rem}
+.hero .tagline span{color:var(--coral)}
 .hero .btn-row{margin-top:0}
 .assurances{list-style:none;padding:0;margin:2rem 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
 .assurances li{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#1a1a1a;font-weight:600;font-size:.92rem;padding:.45rem 1rem .45rem .8rem;border-radius:999px}
