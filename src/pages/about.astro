@@ -1,5 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const team = [
+  { name: 'Cathy Jackson', role: 'Support Worker', photo: 'cathy.png', bio: 'Cathy_Jackson_Staff_Bio Revised.png', intro: 'Warm, empathetic and always ready with a good sense of humour, Cathy brings a relaxed and genuinely person-centred approach to her role as a Support Worker.' },
+  { name: 'Eileen Portelli', role: 'Social Support Carer', photo: 'eileen.png', bio: 'Eileen_Portelli_Staff_Bio Revised.png', intro: 'Honest, patient and genuinely caring, Eileen brings 15 years in Aged Care and a gentle, dignity-first approach to everyone she supports.' },
+  { name: 'Emmily Long', role: 'Support Worker', photo: 'emmily.png', bio: 'Emmily_Long_Staff_Bio Revised.png', intro: 'Bubbly, resilient and endlessly patient, Emmily brings a person-centred approach and a genuine love of helping people connect with their community and reach their goals.' },
+  { name: 'Jasmin Quinn', role: 'Community Access Support Worker', photo: 'jasmin.png', bio: 'Jasmin_Quinn_Staff_Bio Revised.png', intro: 'Caring, bubbly and genuinely compassionate, Jasmin brings 7 years of support work experience and a person-centred approach that helps people feel heard, valued and confident.' },
+  { name: 'Michelle Potter', role: 'Support Worker', photo: 'michelle.png', bio: 'Michelle_Potter_Staff_Bio (1).png', intro: 'Funny, friendly and endlessly experienced, Michelle brings 20 years in the sector and a genuine gift for making the people she supports laugh and feel at ease.' },
+  { name: 'Tamara Lee', role: 'Disability Support Worker', photo: 'tamara.png', bio: 'Tamara_Lee_Staff_Bio Revised.png', intro: "Warm, endlessly experienced and deeply person-centred, Tamara brings 30 years of hands-on support work and a genuine love of hearing people's stories to everything she does." },
+];
 ---
 <Layout page="about" title="About us | Connectivity Care Solutions" description="Registered NDIS provider in Eleebana, NSW. Meet our founder Susan and learn about our mission, vision and values.">
   <section class="about-top">
@@ -44,6 +53,29 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <section class="team">
+    <div class="wrap">
+      <div class="team-head">
+        <h2><span class="thin">Meet</span> Our Team</h2>
+        <p class="lede">The friendly faces behind Connectivity Care. Get to know the people who'll be supporting you.</p>
+      </div>
+      <div class="team-grid">
+        {team.map((m, i) => (
+          <article class="team-card">
+            <img src={`/images/team/${m.photo}`} alt={`Portrait of ${m.name}`} width="220" height="220" loading="lazy">
+            <h3>{m.name}<span>{m.role}</span></h3>
+            <p>{m.intro}</p>
+            <button type="button" class="btn btn-outline" data-bio={i}>Read full bio</button>
+            <dialog class="bio-dialog" id={`bio-${i}`} aria-label={`${m.name} staff bio`}>
+              <form method="dialog"><button class="bio-close" aria-label="Close bio">&times;</button></form>
+              <img src={encodeURI(`/images/${m.bio}`)} alt={`Staff bio for ${m.name}, ${m.role}. ${m.intro}`} loading="lazy">
+            </dialog>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="services-offered">
     <div class="wrap so-grid">
       <div>
@@ -58,3 +90,12 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-bio]').forEach((btn) => {
+    const dialog = document.getElementById(`bio-${btn.dataset.bio}`) as HTMLDialogElement;
+    btn.addEventListener('click', () => dialog.showModal());
+    // Close when clicking the backdrop
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+  });
+</script>

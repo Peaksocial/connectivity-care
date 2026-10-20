@@ -198,6 +198,24 @@ figure{margin:0}
 .mission-card h2:not(:first-child){margin-top:1.4em}
 .mission-card h2 .thin{font-weight:400;color:var(--coral-pale)}
 .mission-card p{max-width:60ch;margin-inline:auto}
+.team{padding:5rem 0}
+.team-head{text-align:center;max-width:640px;margin:0 auto 3rem}
+.team-head h2{font-family:var(--heading);font-size:clamp(1.8rem,3vw,2.4rem);color:var(--coral);font-weight:700}
+.team-head h2 .thin{font-weight:400;color:var(--coral-pale)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.team-card{background:var(--value-row);border-top-left-radius:34px;padding:2.2rem 1.8rem;text-align:center;display:flex;flex-direction:column;align-items:center}
+.team-card>img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:5px solid var(--magenta)}
+.team-card h3{font-family:var(--heading);font-weight:700;font-size:1.25rem;line-height:1.3;color:#1a1a1a;margin:1.1rem 0 .6rem}
+.team-card h3 span{display:block;font-weight:600;font-size:.95rem;color:var(--magenta)}
+.team-card p{font-size:.95rem;flex:1}
+.team-card .btn{margin-top:1rem;font-size:.75rem;padding:.8rem 1.3rem}
+.bio-dialog{border:0;padding:0;background:transparent;max-width:min(760px,calc(100% - 2rem));max-height:calc(100% - 2rem);overflow:auto}
+.bio-dialog::backdrop{background:rgba(20,0,10,.75)}
+.bio-dialog img{display:block;width:100%;height:auto}
+.bio-close{position:sticky;top:.6rem;float:right;margin:.6rem .6rem -3.4rem 0;width:2.6rem;height:2.6rem;border-radius:50%;border:0;background:#fff;color:var(--magenta);font-size:1.8rem;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:2}
+@media(max-width:1000px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.team-grid{grid-template-columns:1fr}}
+
 .values{display:grid;gap:.6rem;margin-top:2rem;text-align:left}
 .value{background:var(--value-row);border-left:6px solid var(--coral)}
 .value summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:1rem;padding:1.1rem 1.4rem;font-family:var(--body);font-weight:700;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;color:var(--coral)}
